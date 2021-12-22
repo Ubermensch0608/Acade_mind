@@ -1,5 +1,4 @@
-import React from "react";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 import "./styles.css";
 
 const expenses = [
