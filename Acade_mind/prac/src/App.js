@@ -4,12 +4,10 @@ import NewExpenses from "./components/NewExpenses/NewExpenses";
 
 function App() {
   const [expenses, setExpenses] = useState([]);
-  console.log(expenses);
   const newSavedDataHandler = (saveData) => {
     setExpenses((prevExpenses) => {
       return [saveData, ...prevExpenses];
     });
-    console.log(expenses);
   };
   return (
     <div>
