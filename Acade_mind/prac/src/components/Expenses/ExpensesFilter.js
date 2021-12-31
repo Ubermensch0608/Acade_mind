@@ -3,8 +3,7 @@ import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
   const selectFilterHandler = (e) => {
-    const newValue = e.target.value;
-    props.onFilterChange(newValue);
+    props.onFilterChange(e.target.value);
   };
 
   return (

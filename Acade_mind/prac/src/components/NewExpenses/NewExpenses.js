@@ -5,21 +5,24 @@ import ExpenseForm from "./ExpenseForm";
 import "./NewExpenses.css";
 
 const NewExpenses = (props) => {
+  const [isFold, setIsFold] = useState(false);
+
   const getDataHandler = (newData) => {
     const saveData = {
       ...newData,
       id: Math.random().toString(),
     };
     props.newSavedData(saveData);
+    setIsFold(false);
   };
 
-  const [isFold, setIsFold] = useState(false);
   const onOpenHandler = () => {
     setIsFold(true);
   };
   const onCloseHandler = () => {
     setIsFold(false);
   };
+
   return (
     <div className="new-expense">
       {!isFold && <button onClick={onOpenHandler}>Add new expenses</button>}

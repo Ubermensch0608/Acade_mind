@@ -21,7 +21,7 @@ const ExpenseForm = (props) => {
 
     const newData = {
       title: newTitle,
-      amount: newAmount,
+      amount: +newAmount,
       date: new Date(newDate),
     };
 
@@ -29,8 +29,6 @@ const ExpenseForm = (props) => {
     setNewTitle("");
     setNewAmount("");
     setNewDate("");
-
-    props.onClose();
   };
 
   return (
