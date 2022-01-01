@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import AddUser from "./Components/Users/AddUser";
-import UserInfo from "./Components/UserInfo/UserInfo";
+import UsersList from "./Components/Users/UsersList";
 
 function App() {
   const [newInfo, setNewInfo] = useState([]);
-  const getInfoHandler = (info) => {
-    setNewInfo([
-      {
-        id: info.id,
-        name: info.name,
-        age: info.age,
-      },
-      ...newInfo,
-    ]);
+  const addUserHandler = (userName, userAge) => {
+    setNewInfo((prevInfo) => {
+      return [
+        ...prevInfo,
+        { id: Math.random().toString(), name: userName, age: userAge },
+      ];
+    });
   };
 
+  console.log("in App.js");
+  console.log(newInfo);
   return (
     <div>
-      <AddUser giveUserInfo={getInfoHandler} />
-      <UserInfo getUserInfo={newInfo} />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={newInfo} />
     </div>
   );
 }

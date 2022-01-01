@@ -17,26 +17,33 @@ const AddUser = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const info = {
-      id: Math.random().toString(),
-      name: newName,
-      age: newAge,
-    };
-    props.giveUserInfo(info);
+
+    if (newName.trim().length === 0 || newAge.trim().length === 0) {
+      alert("Please fill in the blanks");
+      return;
+    } else if (+newAge < 1) {
+      alert("Please check your Age that you've put");
+      return;
+    }
+
+    props.onAddUser(newName, newAge);
     setNewName("");
     setNewAge("");
   };
   return (
     <Card className={styles.input}>
       <form className="form-input" onSubmit={submitHandler}>
-        <div className="form-input__name">
-          <label>Your Name </label>
-          <input type="text" onChange={nameHandler} value={newName} />
-        </div>
-        <div className="form-imput__age">
-          <label>Your Age</label>
-          <input type="number" onChange={ageHandler} value={newAge} />
-        </div>
+        <label htmlFor="username">Your Name </label>
+        <input
+          id="username"
+          type="text"
+          onChange={nameHandler}
+          value={newName}
+        />
+
+        <label htmlFor="age">Your Age</label>
+        <input id="age" type="number" onChange={ageHandler} value={newAge} />
+
         <Button type="submit">Add new user</Button>
       </form>
     </Card>
