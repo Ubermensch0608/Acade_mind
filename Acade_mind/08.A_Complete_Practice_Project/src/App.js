@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "./Components/Form/Form";
+import AddUser from "./Components/Users/AddUser";
 import UserInfo from "./Components/UserInfo/UserInfo";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-      <Form giveUserInfo={getInfoHandler} />
+      <AddUser giveUserInfo={getInfoHandler} />
       <UserInfo getUserInfo={newInfo} />
     </div>
   );
