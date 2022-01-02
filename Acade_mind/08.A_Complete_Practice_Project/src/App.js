@@ -13,8 +13,6 @@ function App() {
     });
   };
 
-  console.log("in App.js");
-  console.log(newInfo);
   return (
     <div>
       <AddUser onAddUser={addUserHandler} />
