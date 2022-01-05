@@ -28,13 +28,17 @@ function App() {
   };
 
   return (
-    <React.Fragment>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+      }}
+    >
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </React.Fragment>
+    </AuthContext.Provider>
   );
 }
 
