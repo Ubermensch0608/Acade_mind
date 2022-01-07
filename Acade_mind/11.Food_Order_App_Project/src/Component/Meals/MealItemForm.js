@@ -1,30 +1,22 @@
-import React, { useState } from "react";
-import MealItem from "./MealItem";
-import Input from "../UI/Input";
+import React, { useRef } from "react";
 import classes from "./MealItemForm.module.css";
 
-const MealItemForm = (props) => {
-  const [amount, setAmount] = useState("");
-
-  const getAmount = (e) => {
-    setAmount(e.target.value);
-  };
+const MealItemForm = () => {
+  const newAmount = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    props.giveAmount(amount);
-    setAmount("");
+    const sendAmount = newAmount.current.value;
+    console.log(sendAmount);
+    newAmount.current.value = "";
   };
 
-  const onReset = () => {};
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <MealItem name={props.name} desc={props.desc} price={props.price} />
-      <Input onChange={getAmount} value={amount} />
-      <button type="submit" onClick={onReset}>
-        +Add
-      </button>
+      <label htmlFor="Amount">Amount</label>
+      <input ref={newAmount} type="number" />
+      <button type="submit">+Add</button>
     </form>
   );
 };

@@ -1,26 +1,24 @@
 import React from "react";
 import DUMMY_MEALS from "../dummy-meals";
 import Card from "../UI/Card";
-import classes from "./AvailableMeals.module.css";
+import MealItem from "./MealItem";
 import MealItemForm from "./MealItemForm";
 
-const AvailableMeals = (props) => {
-  const amountHandler = (amount) => {
-    props.giveAmount(amount);
-  };
+import classes from "./AvailableMeals.module.css";
 
+const AvailableMeals = () => {
   return (
-    <Card classes={classes.meals}>
+    <Card className={classes.meals}>
       <ul>
-        {DUMMY_MEALS.map((item) => {
+        {DUMMY_MEALS.map((meal) => {
           return (
-            <li key={item.id}>
-              <MealItemForm
-                giveAmount={amountHandler}
-                name={item.name}
-                desc={item.description}
-                price={item.price}
+            <li>
+              <MealItem
+                name={meal.name}
+                desc={meal.description}
+                price={meal.price}
               />
+              <MealItemForm />
             </li>
           );
         })}
