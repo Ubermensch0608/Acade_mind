@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Component/Layout/Header";
 import AvailableMeals from "./Component/Meals/AvailableMeals";
+import Modal from "./Component/UI/Modal";
 
 function App() {
+  const [newOrder, setNewOrder] = useState();
+  const [isClose, setIsClose] = useState(false);
+
+  const orderHandler = () => {
+    setIsClose(true);
+  };
+
+  const closeHandler = () => {
+    setIsClose(false);
+  };
+
   const saveAmount = (amount) => {
-    console.log("in App.js");
-    console.log(amount);
+    setNewOrder(amount);
   };
 
   return (
     <React.Fragment>
-      <Header />
+      {isClose && <Modal orderMenu={newOrder} onClose={closeHandler} />}
+      <Header onClick={orderHandler} />
       <AvailableMeals newAmount={saveAmount} />
     </React.Fragment>
   );

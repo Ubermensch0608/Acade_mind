@@ -8,10 +8,13 @@ const MealItemForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const sendAmount = newAmount.current.value;
+    const sendInfo = {
+      name: props.name,
+      amount: newAmount.current.value,
+    };
 
-    if (sendAmount.trim() > 0) {
-      props.newAmount(sendAmount);
+    if (sendInfo.amount.trim() > 0) {
+      props.newAmount(sendInfo);
     } else {
       console.log("please put valid number");
     }
