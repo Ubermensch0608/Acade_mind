@@ -1,21 +1,31 @@
 import React, { useRef } from "react";
+import Input from "../UI/Input";
 import classes from "./MealItemForm.module.css";
 
-const MealItemForm = () => {
+const MealItemForm = (props) => {
   const newAmount = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     const sendAmount = newAmount.current.value;
-    console.log(sendAmount);
+
+    if (sendAmount.trim() > 0) {
+      props.newAmount(sendAmount);
+    } else {
+      console.log("please put valid number");
+    }
     newAmount.current.value = "";
   };
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <label htmlFor="Amount">Amount</label>
-      <input ref={newAmount} type="number" />
+      <Input
+        htmlFor="Amount"
+        label="Amount"
+        type="number"
+        input_ref={newAmount}
+      />
       <button type="submit">+Add</button>
     </form>
   );

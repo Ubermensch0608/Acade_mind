@@ -6,19 +6,23 @@ import MealItemForm from "./MealItemForm";
 
 import classes from "./AvailableMeals.module.css";
 
-const AvailableMeals = () => {
+const AvailableMeals = (props) => {
+  const saveAmount = (amount) => {
+    props.newAmount(amount);
+  };
+
   return (
     <Card className={classes.meals}>
       <ul>
         {DUMMY_MEALS.map((meal) => {
           return (
-            <li>
+            <li key={meal.id}>
               <MealItem
                 name={meal.name}
                 desc={meal.description}
                 price={meal.price}
               />
-              <MealItemForm />
+              <MealItemForm newAmount={saveAmount} />
             </li>
           );
         })}
