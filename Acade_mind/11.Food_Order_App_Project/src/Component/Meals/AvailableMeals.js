@@ -9,8 +9,6 @@ import classes from "./AvailableMeals.module.css";
 const AvailableMeals = (props) => {
   const [newInfo, setNewInfo] = useState([]);
 
-  props.newAmount(newInfo);
-
   return (
     <Card className={classes.meals}>
       <ul>
@@ -25,6 +23,7 @@ const AvailableMeals = (props) => {
                 ...prevInfo,
               ];
             });
+            props.newAmount(newInfo);
           };
           return (
             <li key={meal.id}>

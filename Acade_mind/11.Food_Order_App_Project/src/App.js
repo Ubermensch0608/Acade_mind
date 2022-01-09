@@ -17,6 +17,7 @@ function App() {
 
   const saveAmount = (amount) => {
     setNewOrder(amount);
+    console.log(amount);
   };
 
   return (
