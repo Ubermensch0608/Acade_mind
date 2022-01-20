@@ -40,3 +40,10 @@ let people: {
   name: string;
   age: number;
 }[];
+
+// Type inference
+
+let course: string | number = "React - The Complete Guide";
+course = 12341;
+// let course: string = "React - The Complete Guide";
+// type을 따로 지정해주지 않으면, 가장 먼저 배정된 값이 그 변수의 type으로 취급됨
