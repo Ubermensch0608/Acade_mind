@@ -12,7 +12,7 @@ const MainHeader = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={classes.active} to="/product">
+            <NavLink activeClassName={classes.active} to="/products">
               Product
             </NavLink>
           </li>
