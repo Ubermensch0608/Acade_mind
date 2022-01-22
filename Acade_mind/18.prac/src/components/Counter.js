@@ -3,6 +3,8 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
   const counter = useSelector((state) => state.counter);
+  const isShow = useSelector((state) => state.showCounter);
+
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
@@ -17,12 +19,15 @@ const Counter = () => {
     dispatch({ type: "decrement" });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {/* isShow가 Truthy한 값일 때 counter value가 보임*/}
+      {isShow && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>+</button>
         <button onClick={increaseHandler}>increase by 10</button>
