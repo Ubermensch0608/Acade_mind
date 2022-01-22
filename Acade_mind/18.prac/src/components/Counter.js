@@ -1,26 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
+import { counterActions } from "../store/index";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
-  const counter = useSelector((state) => state.counter);
-  const isShow = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const isShow = useSelector((state) => state.counter.showCounter);
 
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
   };
 
   const increaseHandler = () => {
-    dispatch({ type: "increase", value: 10 });
+    dispatch(counterActions.increase(10)); // { type: SOME_UNIQUE_INDENTIFIER, payload: 10 }
   };
 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
@@ -29,9 +30,9 @@ const Counter = () => {
       {/* isShow가 Truthy한 값일 때 counter value가 보임*/}
       {isShow && <div className={classes.value}>{counter}</div>}
       <div>
-        <button onClick={incrementHandler}>+</button>
-        <button onClick={increaseHandler}>increase by 10</button>
         <button onClick={decrementHandler}>-</button>
+        <button onClick={increaseHandler}>increase by 10</button>
+        <button onClick={incrementHandler}>+</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
