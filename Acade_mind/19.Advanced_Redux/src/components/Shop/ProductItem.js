@@ -5,16 +5,14 @@ import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  const ammount = useSelector((state) => state.cart.ammount);
+  const isToggleOpened = useSelector((state) => state.cart.isOpened);
   const { title, price, description } = props;
 
   const addHandler = () => {
-    if (ammount === 0) {
-      dispatch(cartActions.increment());
+    if (isToggleOpened === false) {
       dispatch(cartActions.toggleCart());
-    } else {
-      dispatch(cartActions.increment());
     }
+    dispatch(cartActions.increment());
   };
   return (
     <li className={classes.item}>
