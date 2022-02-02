@@ -1,32 +1,27 @@
-import Todos from "./components/Todos";
-import Todo from "./models/todo";
-import NewTodo from "./components/NewTodo";
 import React, { useState } from "react";
+import NewTodo from "./components/NewTodo";
+import Todos from "./components/Todos";
+import { Todo } from "./models/todo";
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const saveTodoHandler = (todo: string) => {
-    const newTodo = new Todo(todo);
+  const saveTodoHandler = (NewTodo: string) => {
+    console.log(NewTodo, "in App.tsx");
 
-    setTodos((prevTodo) => {
-      // concat과 reverse를 사용하는 방법
-      // return prevTodo.reverse().concat(newTodo).reverse();
-      return [newTodo, ...prevTodo]; // spread 문법을 쓰는 방법
+    setTodos((prevTodos) => {
+      return [new Todo(NewTodo), ...prevTodos];
     });
   };
 
-  const removeTodoHandler = (todoId: string) => {
-    console.log(todoId);
-    setTodos((prevTodo)=>{
-      return prevTodo.filter((item)=> item.id !== todoId)
-    })
+  const removeTodoHandler = (todoTextId: string) => {
+    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoTextId));
   };
 
   return (
     <div>
       <NewTodo onAddTodo={saveTodoHandler} />
-      <Todos items={todos} onRemoveTodo={removeTodoHandler} />
+      <Todos item={todos} onRemoveTodo={removeTodoHandler} />
     </div>
   );
 };
