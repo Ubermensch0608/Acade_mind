@@ -1,11 +1,10 @@
 import React from "react";
 
 const TodoItem: React.FC<{
-  text: string;
-
+  todoText: string;
   onRemoveTodo: () => void;
 }> = (props) => {
-  return <li onClick={props.onRemoveTodo}>{props.text}</li>;
+  return <li onClick={props.onRemoveTodo}>{props.todoText}</li>;
 };
 
 export default TodoItem;
