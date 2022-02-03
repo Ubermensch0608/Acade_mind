@@ -1,18 +1,21 @@
 import Todos from "./components/Todos";
 import Todo from "./models/todo";
 import NewTodo from "./components/NewTodo";
-
-const MOCK_DATA = [
-  new Todo("리액트 배우기"),
-  new Todo("타입스크립트 배우기"),
-  new Todo("깃 배우기"),
-];
+import { useState } from "react";
 
 const App = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const saveTodoHandler = (text: string) => {
+    setTodos((prev) => {
+      return [new Todo(text), ...prev];
+    });
+  };
+
   return (
     <div>
-      <NewTodo />
-      <Todos items={MOCK_DATA} />
+      <NewTodo onAddTodo={saveTodoHandler} />
+      <Todos items={todos} />
     </div>
   );
 };
