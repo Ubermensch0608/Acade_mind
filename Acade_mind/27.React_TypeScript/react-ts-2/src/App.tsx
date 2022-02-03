@@ -1,5 +1,6 @@
 import Todos from "./components/Todos";
 import Todo from "./models/todo";
+import NewTodo from "./components/NewTodo";
 
 const MOCK_DATA = [
   new Todo("리액트 배우기"),
@@ -10,6 +11,7 @@ const MOCK_DATA = [
 const App = () => {
   return (
     <div>
+      <NewTodo />
       <Todos items={MOCK_DATA} />
     </div>
   );
