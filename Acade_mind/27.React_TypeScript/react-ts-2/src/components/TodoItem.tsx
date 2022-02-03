@@ -1,8 +1,12 @@
 import React from "react";
 
-const TodoItem: React.FC<{ todoText: string; timeStamp: string }> = (props) => {
+const TodoItem: React.FC<{
+  todoText: string;
+  timeStamp: string;
+  onRemove: () => void;
+}> = (props) => {
   return (
-    <li>
+    <li onClick={props.onRemove}>
       {props.todoText} {props.timeStamp}
     </li>
   );
