@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+//  custom hook의 시작은 무조건 'use'로
 
-const useCounter = (forwards = true) => {
+import { useEffect, useState } from "react";
+
+const useCounter = (isForward = true) => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (forwards) {
+      if (isForward) {
         setCounter((prevCounter) => prevCounter + 1);
       } else {
         setCounter((prevCounter) => prevCounter - 1);
@@ -13,7 +15,7 @@ const useCounter = (forwards = true) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [forwards]);
+  }, [isForward]);
 
   return counter;
 };
